@@ -2124,7 +2124,7 @@
                 <!-- Copyright -->
                 <div class="border-t border-gray-700 pt-8">
                     <p class="text-gray-400 mono-text text-sm">
-                        © 2024 Edward Thapelo Hlapane. All rights reserved. | Powered by Innovation &amp; Passion
+                        © 2025 Edward Thapelo Hlapane. All rights reserved. | Powered by Innovation &amp; Passion
                     </p>
                     <p class="text-gray-500 mono-text text-xs mt-2">
                         "The future belongs to those who believe in the beauty of their dreams." - Eleanor Roosevelt
@@ -2774,78 +2774,27 @@
             `;
         }
 
-        function openProfilePictureModal() {
-            document.getElementById('profilePictureModal').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-            
-            // Update preview with current profile picture
-            const preview = document.getElementById('profilePreview');
-            if (profilePicture) {
-                preview.innerHTML = `<img src="Pic.jpg" alt="Profile Picture" class="w-full h-full object-cover">`;
-            } else {
-                preview.innerHTML = '🚀';
-            }
-        }
+        function openProfilePictureModal() { 
+        document.getElementById('profilePictureModal').classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
 
-        function closeProfilePictureModal() {
-            document.getElementById('profilePictureModal').classList.add('hidden');
-            document.body.style.overflow = 'auto';
-            document.getElementById('profilePictureInput').value = '';
-        }
+        // Always show your fixed picture
+        const preview = document.getElementById('profilePreview');
+        preview.innerHTML = `<img src="Pic.jpg" alt="Profile Picture" class="w-full h-full object-cover">`;
+    }
 
-        function saveProfilePicture() {
-            const fileInput = document.getElementById('profilePictureInput');
-            
-            if (fileInput.files && fileInput.files[0]) {
-                const file = fileInput.files[0];
-                
-                // Check file size (5MB limit)
-                if (file.size > 5 * 1024 * 1024) {
-                    alert('File size must be less than 5MB. Please choose a smaller image.');
-                    return;
-                }
-                
-                // Check file type
-                if (!file.type.match(/^image\/(jpeg|jpg|png)$/)) {
-                    alert('Please select a JPG or PNG image file.');
-                    return;
-                }
-                
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    profilePicture = e.target.result;
-                    updateProfilePictureDisplay();
-                    saveToLocalStorage();
-                    closeProfilePictureModal();
-                };
-                reader.readAsDataURL(file);
-            } else if (profilePicture) {
-                // If no new file selected but profile picture exists, just close modal
-                closeProfilePictureModal();
-            } else {
-                alert('Please select an image file.');
-            }
-        }
+    function closeProfilePictureModal() {
+        document.getElementById('profilePictureModal').classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    }
 
-        function removeProfilePicture() {
-            if (confirm('Are you sure you want to remove your profile picture?')) {
-                profilePicture = null;
-                updateProfilePictureDisplay();
-                saveToLocalStorage();
-                closeProfilePictureModal();
-            }
-        }
+    function updateProfilePictureDisplay() {
+        const display = document.getElementById('profilePictureDisplay');
+        display.innerHTML = `<img src="Pic.jpg" alt="Profile Picture" class="w-full h-full object-cover">`;
+    }
 
-        function updateProfilePictureDisplay() {
-            const display = document.getElementById('profilePictureDisplay');
-            
-            if (profilePicture) {
-                display.innerHTML = `<img src="Pic.jpg" alt="Profile Picture" class="w-full h-full object-cover">`;
-            } else {
-                display.innerHTML = '🚀';
-            }
-        }
-
+    // Call once to set the picture on page load
+    document.addEventListener("DOMContentLoaded", updateProfilePictureDisplay);
         function renderProjects() {
             const projectsGrid = document.getElementById('projects-grid');
             projectsGrid.innerHTML = '';
