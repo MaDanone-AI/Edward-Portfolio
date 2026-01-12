@@ -1,9 +1,11 @@
-Creative Cyberpunk Portfolio
+Creative Cyberpunk Portfolio:
 
 A high-performance, responsive personal portfolio website featuring a futuristic cyberpunk aesthetic. This project showcases technical skills, educational background, and creative projects through an immersive, interactive user interface.
 
 Features
-Cyberpunk Aesthetic: Immersive dark theme with neon accents, glowing borders, and glassmorphism effects.
+Cyberpunk Aesthetic: 
+
+Immersive dark theme with neon accents, glowing borders, and glassmorphism effects.
 
 Interactive UI Elements:
 
